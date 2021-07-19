@@ -15,6 +15,16 @@ namespace ConsoleTestApp
         static string svet;
         static string temperature;
 
+        static string relayState1;
+        static string relayState2;
+        static string relayState3;
+        static string relayState4;
+
+        static string SetDHT_t;
+        static string SetDHT_h;
+        static string SetSvet;
+        static string SetTemperature;
+
         static int DHT_t;
         static int DHT_h;
         static int Svet;
@@ -43,7 +53,7 @@ namespace ConsoleTestApp
 
             int count = sp.BytesToRead;
 
-            if (count == 16)
+            if (count == 37)
             {
 
                 for (int i = 0; i < count; i++)
@@ -55,59 +65,77 @@ namespace ConsoleTestApp
 
 
                 }
-
+               // string[] aray = { " ", " ", " ", " ", " ", "", "", "", "", "", "", "" };
+                //new string[12];
+               // aray = { " ", " ", " ", " ", " ", "", "", "", "", "", "", "" };
                 Console.WriteLine(returnData.ToString());
                 data = returnData.ToString();
-                var array = Program.data.ToString().Split(new[] { ',' });
-                var col = array.Length;
-                if (col != 0)
-                {
-                    if (array[col - 1].ToString() != "")
-                        temperature = array[col - 1].ToString();
-                    else
-                        temperature = "";
+               string[] aray = data.ToString().Split(new [] { ',' });
+                var col = aray.Length;
+                // if (col != 0)
+                //  {
+                //    if (aray[col - 1].ToString() != "")
+                temperature = aray[col - 1].ToString();
+                //    else
+                //       temperature = "";
 
 
 
 
-                    if (col != 0)
-                    {
+                //     if (col != 0)
+                //     {
 
 
-                        if (array[col - 2].ToString() != "")
-                        {
-                            svet = array[col - 2].ToString();
-                        }
-                        else
-                        {
-                            svet = "";
-                        }
+                //       if (aray[col - 2].ToString() != "")
+                //       {
+                svet = aray[col - 2].ToString();
+                //       }
+                //       else
+                //       {
+                //          svet = "";
+                //       }
 
 
-                        if (array[col - 3].ToString() != "")
-                        {
-                            dht_h = array[col - 3].ToString();
-                        }
-                        else
-                        {
-                            dht_h = "";
-                        }
+                //      if (aray[col - 3].ToString() != "")
+                //      {
+                dht_h = aray[col - 3].ToString();
+                //      }
+                //      else
+                //     {
+                //        dht_h = "";
+                //     }
 
-                    }
-                    else
-                    {
-                        svet = "";
-                        dht_h = "";
-                    }
+                //    }
+                //    else
+                //   {
+                //       svet = "";
+                //       dht_h = "";
+                //   }
 
-                    if (array[col - 4].ToString() != "")
-                        dht_t = array[col - 4].ToString();
-                    else
-                        dht_t = "";
+                //   if (aray[col - 4].ToString() != "")
+                dht_t = aray[col - 4].ToString();
+                //   else
+                //      dht_t = "";
+
+                SetTemperature = aray[col - 5].ToString();
+                SetSvet = aray[col - 6].ToString();
+                SetDHT_h = aray[col - 7].ToString();
+                SetDHT_t = aray[col - 8].ToString();
 
 
 
-                }
+                relayState4 = aray[col - 9].ToString();
+                relayState3 = aray[col - 10].ToString();
+                relayState2 = aray[col - 11].ToString();
+                relayState1 = aray[col - 12].ToString();
+                
+                
+                
+
+                
+
+
+                //}
 
                 CultureInfo ciEnUs = new CultureInfo("en-us");
 
@@ -119,6 +147,16 @@ namespace ConsoleTestApp
                 Console.WriteLine(DHT_h);
                 Console.WriteLine(Svet);
                 Console.WriteLine(Temperature);
+
+                Console.WriteLine(SetDHT_t);
+                Console.WriteLine(SetDHT_h);
+                Console.WriteLine(SetSvet);
+                Console.WriteLine(SetTemperature);
+
+                Console.WriteLine(relayState1);
+                Console.WriteLine(relayState2);
+                Console.WriteLine(relayState3);
+                Console.WriteLine(relayState4);
 
                 returnData = "";
 
