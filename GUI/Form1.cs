@@ -14,15 +14,27 @@ namespace GUI
 {
     public partial class Form1 : Form
     {
+        string returnData = "";
+        string data = "";
+        string dht_t = "";
+        string dht_h = "";
+        string svet = "";
+        string temperature = "";
+
+        string relayState1 = "";
+        string relayState2 = "";
+        string relayState3 = "";
+        string relayState4 = "";
+
+        string SetDHT_t = "";
+        string SetDHT_h = "";
+        string SetSvet = "";
+        string SetTemperature = "";
+
         public Form1()
         {
             InitializeComponent();
         }
-
-
-
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -50,7 +62,8 @@ namespace GUI
                 {
                     serialPort.PortName = ComboBoxPorts.Text;
                     serialPort.Open();
-                    ButtonConnect.Text = "Disconnect";
+                    timer1.Enabled = true;
+                    ButtonConnect.Text = "Disconnect";             
                     ComboBoxPorts.Enabled = false;
 
                 }
@@ -63,30 +76,16 @@ namespace GUI
             {
                 serialPort.Close();
                 ComboBoxPorts.Enabled = true;
+                timer1.Enabled = false;
                 ButtonConnect.Text = "Connect";
             }
         }
 
 
 
-        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string returnData = "";
-            string data;
-            string dht_t = "";
-            string dht_h = "";
-            string svet = "";
-            string temperature = "";
-
-            string relayState1 = "";
-            string relayState2 = "";
-            string relayState3 = "";
-            string relayState4 = "";
-
-            string SetDHT_t = "";
-            string SetDHT_h = "";
-            string SetSvet = "";
-            string SetTemperature = "";
+            
 
             SerialPort sp = (SerialPort)sender;
 
@@ -143,26 +142,29 @@ namespace GUI
                 sp.DiscardInBuffer();
             }
 
-            LableDHT11_t.Text = "Температура воздуха: " + dht_t + " °C";
-            LableDHT11_h.Text = "Влажность воздуха: " + dht_h + " %";
-            LableDS18B20.Text = "Внутренняя температура: " + temperature + " °C";
-            LableLight.Text = "Освещённость: " + svet + " попугаев";
-
-            LableDHT11_t_fixed.Text = "Температура переключения реле: " + SetDHT_t + " °C";
-            LableDHT11_h_fixed.Text = "Влажность переключения реле: " + SetDHT_h + " %";
-            LabelSvet_fixed.Text = "Попугаи переключения реле: " + SetSvet + " попугаев";
-            LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + SetTemperature + " °C";
-
-            LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + relayState1;
-            LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + relayState2;
-            LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + relayState3;
-            LableReleyStateSvet.Text = "Состояние реле Освещённости: " + relayState4;
+            
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (data != "")
+            {
+                LableDHT11_t.Text = "Температура воздуха: " + dht_t + " °C";
+                LableDHT11_h.Text = "Влажность воздуха: " + dht_h + " %";
+                LableDS18B20.Text = "Внутренняя температура: " + temperature + " °C";
+                LableLight.Text = "Освещённость: " + svet + " попугаев";
 
+                LableDHT11_t_fixed.Text = "Температура переключения реле: " + SetDHT_t + " °C";
+                LableDHT11_h_fixed.Text = "Влажность переключения реле: " + SetDHT_h + " %";
+                LabelSvet_fixed.Text = "Попугаи переключения реле: " + SetSvet + " попугаев";
+                LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + SetTemperature + " °C";
 
-
-
+                LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + relayState1;
+                LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + relayState2;
+                LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + relayState3;
+                LableReleyStateSvet.Text = "Состояние реле Освещённости: " + relayState4;
+            }
+        }
     }
 }
 
