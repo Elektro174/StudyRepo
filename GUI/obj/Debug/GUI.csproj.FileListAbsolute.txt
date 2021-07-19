@@ -8,3 +8,10 @@ C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.GenerateResource.
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.exe
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.pdb
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\NLog.config
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\ConsoleApp2.exe
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\NLog.dll
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\ConsoleApp2.pdb
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\ConsoleApp2.exe.config
+C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\NLog.xml
+C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.CopyComplete

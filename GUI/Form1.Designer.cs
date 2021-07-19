@@ -46,36 +46,40 @@ namespace GUI
             // 
             // LableDHT11_t
             // 
-            this.LableDHT11_t.Location = new System.Drawing.Point(47, 40);
+            this.LableDHT11_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LableDHT11_t.Location = new System.Drawing.Point(47, 31);
             this.LableDHT11_t.Name = "LableDHT11_t";
-            this.LableDHT11_t.Size = new System.Drawing.Size(68, 36);
+            this.LableDHT11_t.Size = new System.Drawing.Size(266, 49);
             this.LableDHT11_t.TabIndex = 0;
             this.LableDHT11_t.Text = "DHT11_t";
             this.LableDHT11_t.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LableDHT11_h
             // 
+            this.LableDHT11_h.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LableDHT11_h.Location = new System.Drawing.Point(47, 98);
             this.LableDHT11_h.Name = "LableDHT11_h";
-            this.LableDHT11_h.Size = new System.Drawing.Size(68, 36);
+            this.LableDHT11_h.Size = new System.Drawing.Size(266, 50);
             this.LableDHT11_h.TabIndex = 1;
             this.LableDHT11_h.Text = "DHT11_h";
             this.LableDHT11_h.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LableLight
             // 
+            this.LableLight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LableLight.Location = new System.Drawing.Point(47, 165);
             this.LableLight.Name = "LableLight";
-            this.LableLight.Size = new System.Drawing.Size(68, 36);
+            this.LableLight.Size = new System.Drawing.Size(266, 36);
             this.LableLight.TabIndex = 2;
             this.LableLight.Text = "Light";
             this.LableLight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LableDS18B20
             // 
-            this.LableDS18B20.Location = new System.Drawing.Point(47, 222);
+            this.LableDS18B20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LableDS18B20.Location = new System.Drawing.Point(47, 218);
             this.LableDS18B20.Name = "LableDS18B20";
-            this.LableDS18B20.Size = new System.Drawing.Size(68, 36);
+            this.LableDS18B20.Size = new System.Drawing.Size(266, 69);
             this.LableDS18B20.TabIndex = 3;
             this.LableDS18B20.Text = "DS18B20";
             this.LableDS18B20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,7 +123,7 @@ namespace GUI
             // 
             // ButtonConnect
             // 
-            this.ButtonConnect.Location = new System.Drawing.Point(597, 129);
+            this.ButtonConnect.Location = new System.Drawing.Point(953, 98);
             this.ButtonConnect.Name = "ButtonConnect";
             this.ButtonConnect.Size = new System.Drawing.Size(207, 72);
             this.ButtonConnect.TabIndex = 8;
@@ -129,7 +133,7 @@ namespace GUI
             // 
             // ButtonUpdatePorts
             // 
-            this.ButtonUpdatePorts.Location = new System.Drawing.Point(597, 222);
+            this.ButtonUpdatePorts.Location = new System.Drawing.Point(953, 12);
             this.ButtonUpdatePorts.Name = "ButtonUpdatePorts";
             this.ButtonUpdatePorts.Size = new System.Drawing.Size(207, 68);
             this.ButtonUpdatePorts.TabIndex = 9;
@@ -140,10 +144,14 @@ namespace GUI
             // ComboBoxPorts
             // 
             this.ComboBoxPorts.FormattingEnabled = true;
-            this.ComboBoxPorts.Location = new System.Drawing.Point(397, 251);
+            this.ComboBoxPorts.Location = new System.Drawing.Point(796, 40);
             this.ComboBoxPorts.Name = "ComboBoxPorts";
             this.ComboBoxPorts.Size = new System.Drawing.Size(121, 21);
             this.ComboBoxPorts.TabIndex = 10;
+            // 
+            // serialPort
+            // 
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
             // 
             // Form1
             // 
