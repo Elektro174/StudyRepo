@@ -46,7 +46,6 @@ namespace GUI
             this.LableReleyStateSvet = new System.Windows.Forms.Label();
             this.LableReleyStateDHT11_h = new System.Windows.Forms.Label();
             this.LableReleyStateDHT11_t = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // LableDHT11_t
@@ -201,10 +200,6 @@ namespace GUI
             this.LableReleyStateDHT11_t.Text = "DHT11_t";
             this.LableReleyStateDHT11_t.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,7 +245,6 @@ namespace GUI
         private System.Windows.Forms.Label LableReleyStateSvet;
         private System.Windows.Forms.Label LableReleyStateDHT11_h;
         private System.Windows.Forms.Label LableReleyStateDHT11_t;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 

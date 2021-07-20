@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace GUI
     {
         string returnData = "";
         string data = "";
-        string dht_t = "";
+        /*string dht_t = "";
         string dht_h = "";
         string svet = "";
         string temperature = "";
@@ -29,7 +30,7 @@ namespace GUI
         string SetDHT_t = "";
         string SetDHT_h = "";
         string SetSvet = "";
-        string SetTemperature = "";
+        string SetTemperature = "";*/
 
         public Form1()
         {
@@ -62,8 +63,7 @@ namespace GUI
                 {
                     serialPort.PortName = ComboBoxPorts.Text;
                     serialPort.Open();
-                    timer1.Enabled = true;
-                    ButtonConnect.Text = "Disconnect";             
+                    ButtonConnect.Text = "Disconnect";
                     ComboBoxPorts.Enabled = false;
 
                 }
@@ -76,7 +76,6 @@ namespace GUI
             {
                 serialPort.Close();
                 ComboBoxPorts.Enabled = true;
-                timer1.Enabled = false;
                 ButtonConnect.Text = "Connect";
             }
         }
@@ -85,7 +84,7 @@ namespace GUI
 
         public void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            
+
 
             SerialPort sp = (SerialPort)sender;
 
@@ -106,65 +105,38 @@ namespace GUI
 
                 Console.WriteLine(returnData.ToString());
                 data = returnData.ToString();
-                string[] aray = data.ToString().Split(new[] { ',' });
-                var col = aray.Length;
 
-                temperature = aray[col - 1].ToString();
-                svet = aray[col - 2].ToString();
-                dht_h = aray[col - 3].ToString();
-                dht_t = aray[col - 4].ToString();
-                SetTemperature = aray[col - 5].ToString();
-                SetSvet = aray[col - 6].ToString();
-                SetDHT_h = aray[col - 7].ToString();
-                SetDHT_t = aray[col - 8].ToString();
-                relayState4 = aray[col - 9].ToString();
-                relayState3 = aray[col - 10].ToString();
-                relayState2 = aray[col - 11].ToString();
-                relayState1 = aray[col - 12].ToString();
+                MainFormDataViewModel model = new MainFormDataViewModel(data);
 
-                if (relayState1 == "1")
-                    relayState1 = "Включено";
-                else relayState1 = "Выключено";
+                this.Invoke((MethodInvoker)delegate
+               {
 
-                if (relayState2 == "1")
-                    relayState2 = "Включено";
-                else relayState2 = "Выключено";
 
-                if (relayState3 == "1")
-                    relayState3 = "Включено";
-                else relayState3 = "Выключено";
+                   LableDHT11_t.Text = "Температура воздуха: " + model.dht_t + " °C";
+                   LableDHT11_h.Text = "Влажность воздуха: " + model.dht_h + " %";
+                   LableDS18B20.Text = "Внутренняя температура: " + model.temperature + " °C";
+                   LableLight.Text = "Освещённость: " + model.svet + " попугаев";
 
-                if (relayState4 == "1")
-                    relayState4 = "Включено";
-                else relayState4 = "Выключено";
+                   LableDHT11_t_fixed.Text = "Температура переключения реле: " + model.SetDHT_t + " °C";
+                   LableDHT11_h_fixed.Text = "Влажность переключения реле: " + model.SetDHT_h + " %";
+                   LabelSvet_fixed.Text = "Попугаи переключения реле: " + model.SetSvet + " попугаев";
+                   LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + model.SetTemperature + " °C";
+
+                   LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + model.relayState1;
+                   LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + model.relayState2;
+                   LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + model.relayState3;
+                   LableReleyStateSvet.Text = "Состояние реле Освещённости: " + model.relayState4;
+
+               });
 
                 returnData = "";
                 sp.DiscardInBuffer();
             }
 
-            
+
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (data != "")
-            {
-                LableDHT11_t.Text = "Температура воздуха: " + dht_t + " °C";
-                LableDHT11_h.Text = "Влажность воздуха: " + dht_h + " %";
-                LableDS18B20.Text = "Внутренняя температура: " + temperature + " °C";
-                LableLight.Text = "Освещённость: " + svet + " попугаев";
 
-                LableDHT11_t_fixed.Text = "Температура переключения реле: " + SetDHT_t + " °C";
-                LableDHT11_h_fixed.Text = "Влажность переключения реле: " + SetDHT_h + " %";
-                LabelSvet_fixed.Text = "Попугаи переключения реле: " + SetSvet + " попугаев";
-                LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + SetTemperature + " °C";
-
-                LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + relayState1;
-                LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + relayState2;
-                LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + relayState3;
-                LableReleyStateSvet.Text = "Состояние реле Освещённости: " + relayState4;
-            }
-        }
     }
 }
 
