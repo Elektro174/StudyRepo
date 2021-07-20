@@ -105,6 +105,18 @@
       <Project>{6e931514-a05e-415f-aa3f-74833e3bbb3d}</Project>
       <Name>ConsoleApp2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{b112152e-7598-4e31-b0b1-8f918de5cc18}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{f599ed9d-f00a-4754-850e-afc337a62f2f}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{c90d79f9-2738-4b9a-bb59-e02993cf03c9}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

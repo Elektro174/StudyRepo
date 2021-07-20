@@ -1,4 +1,5 @@
 ﻿using GUI.Models.ViewModels;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,24 +18,32 @@ namespace GUI
     {
         string returnData = "";
         string data = "";
-        /*string dht_t = "";
-        string dht_h = "";
-        string svet = "";
-        string temperature = "";
-
-        string relayState1 = "";
-        string relayState2 = "";
-        string relayState3 = "";
-        string relayState4 = "";
-
-        string SetDHT_t = "";
-        string SetDHT_h = "";
-        string SetSvet = "";
-        string SetTemperature = "";*/
+        
 
         public Form1()
         {
             InitializeComponent();
+            CultureInfo ciEnUs = new CultureInfo("en-us");
+
+            MainFormDataViewModel measurement = new MainFormDataViewModel();
+
+            CollectedData collectedData = new CollectedData();
+            collectedData.Id = 1;
+            collectedData.CreationDate = DateTime.Now.ToString();
+            collectedData.DHT11_t = Int32.Parse(measurement.dht_t);
+            collectedData.DHT11_h = Int32.Parse(measurement.dht_h);
+            collectedData.Svet = Int32.Parse(measurement.svet);
+            collectedData.Temperature = Double.Parse(measurement.temperature);
+
+            collectedData.SetDHT11_t = Int32.Parse(measurement.SetDHT_t);
+            collectedData.SetDHT11_h = Int32.Parse(measurement.SetDHT_h);
+            collectedData.SetSvet = Int32.Parse(measurement.SetSvet);
+            collectedData.SetTemperature = Double.Parse(measurement.SetTemperature);
+
+            collectedData.relayState1 = measurement.relayState1;
+            collectedData.relayState2 = measurement.relayState2;
+            collectedData.relayState3 = measurement.relayState3;
+            collectedData.relayState4 = measurement.relayState4;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -13,6 +13,6 @@ namespace Models
         [Key]
         [Index]
         public int Id { get; set; }
-        public string DateTime { get; set; }
+        public string CreationDate { get; set; }
     }
 }
