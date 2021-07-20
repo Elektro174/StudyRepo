@@ -1,5 +1,7 @@
-﻿using GUI.Models.ViewModels;
+﻿using Data;
+using GUI.Models.ViewModels;
 using Models;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,27 +25,34 @@ namespace GUI
         public Form1()
         {
             InitializeComponent();
-            CultureInfo ciEnUs = new CultureInfo("en-us");
+            /*CultureInfo ciEnUs = new CultureInfo("en-us");
 
             MainFormDataViewModel measurement = new MainFormDataViewModel();
 
             CollectedData collectedData = new CollectedData();
             collectedData.Id = 1;
             collectedData.CreationDate = DateTime.Now.ToString();
-            collectedData.DHT11_t = Int32.Parse(measurement.dht_t);
-            collectedData.DHT11_h = Int32.Parse(measurement.dht_h);
-            collectedData.Svet = Int32.Parse(measurement.svet);
-            collectedData.Temperature = Double.Parse(measurement.temperature);
+            collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
+            collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
+            collectedData.Svet = Convert.ToInt32(measurement.svet);
+            collectedData.Temperature = Convert.ToDouble(measurement.temperature);
 
-            collectedData.SetDHT11_t = Int32.Parse(measurement.SetDHT_t);
-            collectedData.SetDHT11_h = Int32.Parse(measurement.SetDHT_h);
-            collectedData.SetSvet = Int32.Parse(measurement.SetSvet);
-            collectedData.SetTemperature = Double.Parse(measurement.SetTemperature);
+            collectedData.SetDHT11_t = Convert.ToInt32(measurement.SetDHT_t);
+            collectedData.SetDHT11_h = Convert.ToInt32(measurement.SetDHT_h);
+            collectedData.SetSvet = Convert.ToInt32(measurement.SetSvet);
+            collectedData.SetTemperature = Convert.ToDouble(measurement.SetTemperature);
 
             collectedData.relayState1 = measurement.relayState1;
             collectedData.relayState2 = measurement.relayState2;
             collectedData.relayState3 = measurement.relayState3;
             collectedData.relayState4 = measurement.relayState4;
+
+            PracticeDbContext context = new PracticeDbContext();
+            CollectedDataRepository collectedDataRepository = new CollectedDataRepository(context);
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            collectedDataRepository.Create(collectedData);
+            unitOfWork.Save();*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -99,7 +108,7 @@ namespace GUI
 
             int count = sp.BytesToRead;
 
-            if (count == 37)
+            if (count == 36)
             {
 
                 for (int i = 0; i < count; i++)
@@ -145,7 +154,37 @@ namespace GUI
 
         }
 
+        private void ButtonWriteDataToDb_Click(object sender, EventArgs e)
+        {
+            //CultureInfo ciEnUs = new CultureInfo("en-us");
 
+            MainFormDataViewModel measurement = new MainFormDataViewModel(data);
+
+            CollectedData collectedData = new CollectedData();
+            collectedData.Id = 1;
+            collectedData.CreationDate = DateTime.Now.ToString();
+            collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
+            collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
+            collectedData.Svet = Convert.ToInt32(measurement.svet);
+            collectedData.Temperature = double.Parse(measurement.temperature, CultureInfo.InvariantCulture);
+
+            collectedData.SetDHT11_t = Convert.ToInt32(measurement.SetDHT_t);
+            collectedData.SetDHT11_h = Convert.ToInt32(measurement.SetDHT_h);
+            collectedData.SetSvet = Convert.ToInt32(measurement.SetSvet);
+            collectedData.SetTemperature = double.Parse(measurement.SetTemperature, CultureInfo.InvariantCulture);
+
+            collectedData.relayState1 = measurement.relayState1;
+            collectedData.relayState2 = measurement.relayState2;
+            collectedData.relayState3 = measurement.relayState3;
+            collectedData.relayState4 = measurement.relayState4;
+
+            PracticeDbContext context = new PracticeDbContext();
+            CollectedDataRepository collectedDataRepository = new CollectedDataRepository(context);
+            UnitOfWork unitOfWork = new UnitOfWork(context);
+
+            collectedDataRepository.Create(collectedData);
+            unitOfWork.Save();
+        }
     }
 }
 

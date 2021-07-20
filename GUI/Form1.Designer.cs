@@ -46,6 +46,7 @@ namespace GUI
             this.LableReleyStateSvet = new System.Windows.Forms.Label();
             this.LableReleyStateDHT11_h = new System.Windows.Forms.Label();
             this.LableReleyStateDHT11_t = new System.Windows.Forms.Label();
+            this.ButtonWriteDataToDb = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LableDHT11_t
@@ -200,11 +201,22 @@ namespace GUI
             this.LableReleyStateDHT11_t.Text = "DHT11_t";
             this.LableReleyStateDHT11_t.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ButtonWriteDataToDb
+            // 
+            this.ButtonWriteDataToDb.Location = new System.Drawing.Point(673, 420);
+            this.ButtonWriteDataToDb.Name = "ButtonWriteDataToDb";
+            this.ButtonWriteDataToDb.Size = new System.Drawing.Size(182, 61);
+            this.ButtonWriteDataToDb.TabIndex = 15;
+            this.ButtonWriteDataToDb.Text = "Write data to Db";
+            this.ButtonWriteDataToDb.UseVisualStyleBackColor = true;
+            this.ButtonWriteDataToDb.Click += new System.EventHandler(this.ButtonWriteDataToDb_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 549);
+            this.Controls.Add(this.ButtonWriteDataToDb);
             this.Controls.Add(this.LableReleyStateTemperature);
             this.Controls.Add(this.LableReleyStateSvet);
             this.Controls.Add(this.LableReleyStateDHT11_h);
@@ -245,6 +257,7 @@ namespace GUI
         private System.Windows.Forms.Label LableReleyStateSvet;
         private System.Windows.Forms.Label LableReleyStateDHT11_h;
         private System.Windows.Forms.Label LableReleyStateDHT11_t;
+        private System.Windows.Forms.Button ButtonWriteDataToDb;
     }
 }
 

@@ -18,13 +18,13 @@ namespace Models
         public int DHT11_h { get; set; }
         public int Svet { get; set; }
 
-        [Column(TypeName = "DOUBLE")]
+        //[Column(TypeName = "DOUBLE")]
         public double Temperature { get; set; }
         public int SetDHT11_t { get; set; }
         public int SetDHT11_h { get; set; }
         public int SetSvet { get; set; }
 
-        [Column(TypeName = "DOUBLE")]
+        //[Column(TypeName = "DOUBLE")]
         public double SetTemperature { get; set; }
         
         [Column(TypeName = "NVARCHAR")]

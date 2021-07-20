@@ -1,0 +1,12 @@
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\Models.dll.config
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\Models.dll
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\Models.pdb
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\EntityFramework.dll
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\EntityFramework.xml
+C:\Users\glebn\source\repos\StudyRepo\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\glebn\source\repos\StudyRepo\Models\obj\Debug\Models.csprojAssemblyReference.cache
+C:\Users\glebn\source\repos\StudyRepo\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\glebn\source\repos\StudyRepo\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\glebn\source\repos\StudyRepo\Models\obj\Debug\Models.dll
+C:\Users\glebn\source\repos\StudyRepo\Models\obj\Debug\Models.pdb

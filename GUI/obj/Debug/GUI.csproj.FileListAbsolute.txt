@@ -15,3 +15,7 @@ C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\ConsoleApp2.pdb
 C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\ConsoleApp2.exe.config
 C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\NLog.xml
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\NLog.config
+C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.exe.config
+C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.exe
+C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.pdb
