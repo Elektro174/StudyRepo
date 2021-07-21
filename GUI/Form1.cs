@@ -160,6 +160,12 @@ namespace GUI
 
             MainFormDataViewModel measurement = new MainFormDataViewModel(data);
 
+            User user = new User();
+            user.FirstName = "Глеб";
+            user.SecondName = "Никифоров";
+            user.CreationDate = DateTime.Now.ToString();
+            user.Id = 1;
+
             CollectedData collectedData = new CollectedData();
             collectedData.Id = 1;
             collectedData.CreationDate = DateTime.Now.ToString();
@@ -181,8 +187,12 @@ namespace GUI
             PracticeDbContext context = new PracticeDbContext();
             CollectedDataRepository collectedDataRepository = new CollectedDataRepository(context);
             UnitOfWork unitOfWork = new UnitOfWork(context);
+            UsersRepository usersRepository = new UsersRepository(context);
+
 
             collectedDataRepository.Create(collectedData);
+            user.FirstName.
+            usersRepository.Create(user);
             unitOfWork.Save();
         }
     }

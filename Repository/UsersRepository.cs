@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class CollectedDataRepository : Repository<int, CollectedData>, ICollectedDataRepository
+    public class UsersRepository : Repository<int, User>, IUsersRepository
     {
-        public CollectedDataRepository(DbContext dbContext) : base(dbContext) { }
+        public UsersRepository(DbContext dbContext) : base(dbContext) { }
     }
 }

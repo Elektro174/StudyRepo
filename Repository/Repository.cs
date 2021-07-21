@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class Repository<T> : IRepository<T> where T : EntityBase
+    public class Repository<TKey, T> : IRepository<TKey, T> where T : EntityBase
     {
         protected DbContext _dbContext;
         protected readonly IDbSet<T> _dbSet;
@@ -42,7 +42,7 @@ namespace Repository
             return _dbContext.Set<T>().Where(predicate).AsEnumerable();
         }
 
-        public T GetById(int Id)// Guid id
+        public T GetById(TKey Id)// Guid id
         {
             return _dbContext.Set<T>().Find(Id); // id
         }

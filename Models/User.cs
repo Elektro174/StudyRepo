@@ -14,6 +14,6 @@ namespace Models
         public string FirstName { get; set; }
 
         [Column(TypeName = "NVARCHAR")]
-        public string SecondtName { get; set; }
+        public string SecondName { get; set; }
     }
 }
