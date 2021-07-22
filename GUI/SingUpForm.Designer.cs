@@ -39,6 +39,7 @@ namespace GUI
             this.LableGetFirstName = new System.Windows.Forms.Label();
             this.TextBoxSecondName = new System.Windows.Forms.TextBox();
             this.TextBoxFirstName = new System.Windows.Forms.TextBox();
+            this.LableCraeteAccount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonSingUp
@@ -139,11 +140,23 @@ namespace GUI
             this.TextBoxFirstName.Size = new System.Drawing.Size(516, 36);
             this.TextBoxFirstName.TabIndex = 6;
             // 
+            // LableCraeteAccount
+            // 
+            this.LableCraeteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LableCraeteAccount.Location = new System.Drawing.Point(247, 403);
+            this.LableCraeteAccount.Name = "LableCraeteAccount";
+            this.LableCraeteAccount.Size = new System.Drawing.Size(303, 38);
+            this.LableCraeteAccount.TabIndex = 10;
+            this.LableCraeteAccount.Text = "Есть аккаунт? – Войдите";
+            this.LableCraeteAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LableCraeteAccount.Click += new System.EventHandler(this.LableCraeteAccount_Click);
+            // 
             // SingUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LableCraeteAccount);
             this.Controls.Add(this.LableGetSecondName);
             this.Controls.Add(this.LableGetFirstName);
             this.Controls.Add(this.TextBoxSecondName);
@@ -174,5 +187,6 @@ namespace GUI
         private System.Windows.Forms.Label LableGetFirstName;
         private System.Windows.Forms.TextBox TextBoxSecondName;
         private System.Windows.Forms.TextBox TextBoxFirstName;
+        private System.Windows.Forms.Label LableCraeteAccount;
     }
 }

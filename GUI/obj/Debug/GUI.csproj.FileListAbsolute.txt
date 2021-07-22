@@ -20,3 +20,4 @@ C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.exe
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.pdb
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.MainForm.resources
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.SingUpForm.resources
+C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.SingInForm.resources

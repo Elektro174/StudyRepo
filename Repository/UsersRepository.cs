@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class UsersRepository : Repository<int, User>, IUsersRepository, IDisposable
+    public class UsersRepository : Repository<int, User>, IUsersRepository//, IDisposable
     {
         
 
         public UsersRepository(DbContext dbContext) : base(dbContext) { }
 
-        public void Dispose()
+       /* public void Dispose()
         {
             
-        }
+        }*/
     }
 }

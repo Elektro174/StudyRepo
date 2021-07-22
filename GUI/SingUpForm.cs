@@ -31,10 +31,14 @@ namespace GUI
             SingUpDataViewModel singUpData = new SingUpDataViewModel(TextBoxLogin.Text, TextBoxPass.Text, TextBoxFirstName.Text, TextBoxSecondName.Text);
             User userSingUp = null;
             //PracticeDbContext context = new PracticeDbContext
-            using (PracticeDbContext context = new PracticeDbContext())
+            /*using (PracticeDbContext context = new PracticeDbContext())
             {
                 userSingUp = context.Users.Where(b => b.Login == singUpData.Login).FirstOrDefault();
-            }
+            }*/
+            PracticeDbContext context = new PracticeDbContext();
+            UsersRepository usersRepository = new UsersRepository(context);
+            List<User> users = usersRepository.GetAll().ToList();
+            userSingUp = users.FirstOrDefault(b => b.Login == singUpData.Login);
 
             if (userSingUp == null)
             {
@@ -45,17 +49,24 @@ namespace GUI
                 user.Login = singUpData.Login;
                 user.Pass = singUpData.Pass;
 
-                PracticeDbContext context = new PracticeDbContext();
                 UnitOfWork unitOfWork = new UnitOfWork(context);
-                UsersRepository usersRepository = new UsersRepository(context);
-
-
 
                 usersRepository.Create(user);
 
                 unitOfWork.Save();
+
+                this.Hide();
+                SingInForm singInForm = new SingInForm();
+                singInForm.Show();
             }
             else MessageBox.Show("Пользователь с таким логином уже существует");
+        }
+
+        private void LableCraeteAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SingInForm singInForm = new SingInForm();
+            singInForm.Show();
         }
     }
 }
