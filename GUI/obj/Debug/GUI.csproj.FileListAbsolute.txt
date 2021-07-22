@@ -2,7 +2,6 @@ C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\GUI.exe.config
 C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\GUI.exe
 C:\Users\glebn\source\repos\StudyRepo\GUI\bin\Debug\GUI.pdb
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
-C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.Form1.resources
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.Properties.Resources.resources
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
 C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
@@ -19,3 +18,5 @@ C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\NLog.config
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.exe.config
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.exe
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\GUI.pdb
+C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.MainForm.resources
+C:\Users\glebn\source\repos\StudyRepo\GUI\obj\Debug\GUI.SingUpForm.resources

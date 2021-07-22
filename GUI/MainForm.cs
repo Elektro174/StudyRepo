@@ -10,52 +10,25 @@ using System.Drawing;
 using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        string returnData = "";
-        string data = "";
-        
 
-        public Form1()
+        private string data = "";
+
+        public MainForm()
         {
             InitializeComponent();
-            /*CultureInfo ciEnUs = new CultureInfo("en-us");
 
-            MainFormDataViewModel measurement = new MainFormDataViewModel();
-
-            CollectedData collectedData = new CollectedData();
-            collectedData.Id = 1;
-            collectedData.CreationDate = DateTime.Now.ToString();
-            collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
-            collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
-            collectedData.Svet = Convert.ToInt32(measurement.svet);
-            collectedData.Temperature = Convert.ToDouble(measurement.temperature);
-
-            collectedData.SetDHT11_t = Convert.ToInt32(measurement.SetDHT_t);
-            collectedData.SetDHT11_h = Convert.ToInt32(measurement.SetDHT_h);
-            collectedData.SetSvet = Convert.ToInt32(measurement.SetSvet);
-            collectedData.SetTemperature = Convert.ToDouble(measurement.SetTemperature);
-
-            collectedData.relayState1 = measurement.relayState1;
-            collectedData.relayState2 = measurement.relayState2;
-            collectedData.relayState3 = measurement.relayState3;
-            collectedData.relayState4 = measurement.relayState4;
-
-            PracticeDbContext context = new PracticeDbContext();
-            CollectedDataRepository collectedDataRepository = new CollectedDataRepository(context);
-            UnitOfWork unitOfWork = new UnitOfWork(context);
-
-            collectedDataRepository.Create(collectedData);
-            unitOfWork.Save();*/
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -100,8 +73,9 @@ namespace GUI
 
 
 
-        public void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            string returnData = "";
 
 
             SerialPort sp = (SerialPort)sender;
@@ -191,8 +165,8 @@ namespace GUI
 
 
             collectedDataRepository.Create(collectedData);
-            user.FirstName.
-            usersRepository.Create(user);
+            usersRepository.Delete(user);
+            //usersRepository.DeleteAll(user => true);
             unitOfWork.Save();
         }
     }

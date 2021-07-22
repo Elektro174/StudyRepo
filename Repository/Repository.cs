@@ -28,9 +28,14 @@ namespace Repository
 
         public void Delete(T entity)
         {
+            var entry = _dbContext.Entry(entity);
+            if (entry.State == EntityState.Detached)
+                _dbContext.Set<T>().Attach(entity);
             _dbContext.Set<T>().Remove(entity);
+
+            //_dbContext.Set<T>().Remove(entity);
         }
-    
+
 
         public IEnumerable<T> GetAll()
         {
@@ -42,6 +47,16 @@ namespace Repository
             return _dbContext.Set<T>().Where(predicate).AsEnumerable();
         }
 
+        public IEnumerable<T> DeleteAll()
+        {
+            return _dbContext.Set<T>();
+        }
+
+        public IEnumerable<T> DeleteAll(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().RemoveRange(_dbContext.Set<T>().Where(predicate).AsEnumerable());
+        }
+
         public T GetById(TKey Id)// Guid id
         {
             return _dbContext.Set<T>().Find(Id); // id
@@ -50,6 +65,16 @@ namespace Repository
         public void Update(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public IEnumerable<T> UserSingUp()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate)
+        {
+            return (IEnumerable<T>)_dbContext.Set<T>().FirstOrDefault();
         }
     }
 }

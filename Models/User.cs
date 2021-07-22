@@ -15,5 +15,11 @@ namespace Models
 
         [Column(TypeName = "NVARCHAR")]
         public string SecondName { get; set; }
+
+        [Column(TypeName = "NVARCHAR")]
+        public string Login { get; set; }
+
+        [Column(TypeName = "NVARCHAR")]
+        public string Pass { get; set; }
     }
 }

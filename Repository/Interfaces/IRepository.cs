@@ -13,8 +13,15 @@ namespace Repository.Interfaces
         T GetById(TKey Id); //  Guid id
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(Expression<Func<T, bool >> predicate);
+        IEnumerable<T> DeleteAll();
+        IEnumerable<T> DeleteAll(Expression<Func<T, bool>> predicate);
         void Create(T entity);
         void Delete(T entity);
         void Update(T entity);
+
+        IEnumerable<T> UserSingUp();
+        IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate);
+
+
     }
 }
