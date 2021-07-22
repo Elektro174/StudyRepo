@@ -1,7 +1,9 @@
-﻿using Data;
+﻿using Castle.Windsor;
+using Data;
 using GUI.Models.ViewModels;
 using Models;
 using Repository;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,11 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
+        SingInDataViewModel currentUser = new SingInDataViewModel();
+
+        WindsorContainer _container;
+        ICollectedDataRepository _collectedDataRepository;
+        IUsersRepository _usersRepository;
 
         private string data = "";
 
@@ -26,6 +33,7 @@ namespace GUI
         {
             InitializeComponent();
 
+            LableCurrentUser.Text = "Пользователь: " + currentUser.CurrentUserFirstName + " " + currentUser.CurrentUserSecondName; 
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -129,20 +137,18 @@ namespace GUI
         }
 
         private void ButtonWriteDataToDb_Click(object sender, EventArgs e)
-        {
-            //CultureInfo ciEnUs = new CultureInfo("en-us");
+        {           
+            _container = Bootstrap.BuildContainer();
+            _collectedDataRepository = _container.Resolve<ICollectedDataRepository>();
+            
 
             MainFormDataViewModel measurement = new MainFormDataViewModel(data);
 
-            User user = new User();
-            user.FirstName = "Глеб";
-            user.SecondName = "Никифоров";
-            user.CreationDate = DateTime.Now.ToString();
-            user.Id = 1;
+            
 
             CollectedData collectedData = new CollectedData();
-            collectedData.Id = 1;
             collectedData.CreationDate = DateTime.Now.ToString();
+            collectedData.UserId = currentUser.CurrentUserId;
             collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
             collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
             collectedData.Svet = Convert.ToInt32(measurement.svet);
@@ -158,16 +164,7 @@ namespace GUI
             collectedData.relayState3 = measurement.relayState3;
             collectedData.relayState4 = measurement.relayState4;
 
-            PracticeDbContext context = new PracticeDbContext();
-            CollectedDataRepository collectedDataRepository = new CollectedDataRepository(context);
-            UnitOfWork unitOfWork = new UnitOfWork(context);
-            UsersRepository usersRepository = new UsersRepository(context);
-
-
-            collectedDataRepository.Create(collectedData);
-            usersRepository.Delete(user);
-            //usersRepository.DeleteAll(user => true);
-            unitOfWork.Save();
+            _collectedDataRepository.Create(collectedData);
         }
     }
 }

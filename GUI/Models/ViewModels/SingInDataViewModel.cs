@@ -19,5 +19,8 @@ namespace GUI.Models.ViewModels
         }
         public string Login { get; set; }
         public string Pass { get; set; }
+        public string CurrentUserFirstName { get; set; }
+        public string CurrentUserSecondName { get; set; }
+        public int CurrentUserId { get; set; }
     }
 }

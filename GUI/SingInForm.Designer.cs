@@ -66,6 +66,7 @@ namespace GUI
             this.SingInTextBoxPass.Name = "SingInTextBoxPass";
             this.SingInTextBoxPass.Size = new System.Drawing.Size(516, 36);
             this.SingInTextBoxPass.TabIndex = 2;
+            this.SingInTextBoxPass.UseSystemPasswordChar = true;
             // 
             // SingInLableGetLogin
             // 

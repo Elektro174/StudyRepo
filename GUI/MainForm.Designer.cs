@@ -47,6 +47,7 @@ namespace GUI
             this.LableReleyStateDHT11_h = new System.Windows.Forms.Label();
             this.LableReleyStateDHT11_t = new System.Windows.Forms.Label();
             this.ButtonWriteDataToDb = new System.Windows.Forms.Button();
+            this.LableCurrentUser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LableDHT11_t
@@ -203,19 +204,29 @@ namespace GUI
             // 
             // ButtonWriteDataToDb
             // 
-            this.ButtonWriteDataToDb.Location = new System.Drawing.Point(673, 420);
+            this.ButtonWriteDataToDb.Location = new System.Drawing.Point(953, 234);
             this.ButtonWriteDataToDb.Name = "ButtonWriteDataToDb";
-            this.ButtonWriteDataToDb.Size = new System.Drawing.Size(182, 61);
+            this.ButtonWriteDataToDb.Size = new System.Drawing.Size(207, 61);
             this.ButtonWriteDataToDb.TabIndex = 15;
             this.ButtonWriteDataToDb.Text = "Write data to Db";
             this.ButtonWriteDataToDb.UseVisualStyleBackColor = true;
             this.ButtonWriteDataToDb.Click += new System.EventHandler(this.ButtonWriteDataToDb_Click);
+            // 
+            // LableCurrentUser
+            // 
+            this.LableCurrentUser.Location = new System.Drawing.Point(796, 465);
+            this.LableCurrentUser.Name = "LableCurrentUser";
+            this.LableCurrentUser.Size = new System.Drawing.Size(100, 23);
+            this.LableCurrentUser.TabIndex = 16;
+            this.LableCurrentUser.Text = "CurrentUser";
+            this.LableCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 549);
+            this.Controls.Add(this.LableCurrentUser);
             this.Controls.Add(this.ButtonWriteDataToDb);
             this.Controls.Add(this.LableReleyStateTemperature);
             this.Controls.Add(this.LableReleyStateSvet);
@@ -258,6 +269,7 @@ namespace GUI
         private System.Windows.Forms.Label LableReleyStateDHT11_h;
         private System.Windows.Forms.Label LableReleyStateDHT11_t;
         private System.Windows.Forms.Button ButtonWriteDataToDb;
+        private System.Windows.Forms.Label LableCurrentUser;
     }
 }
 

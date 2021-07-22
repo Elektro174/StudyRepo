@@ -1,7 +1,9 @@
-﻿using Data;
+﻿using Castle.Windsor;
+using Data;
 using GUI.Models.ViewModels;
 using Models;
 using Repository;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,8 @@ namespace GUI
 {
     public partial class SingInForm : Form
     {
+        WindsorContainer _container;
+        IUsersRepository _usersRepository;
         public SingInForm()
         {
             InitializeComponent();
@@ -29,25 +33,48 @@ namespace GUI
         private void ButtonSingIn_Click(object sender, EventArgs e)
         {
             SingInDataViewModel singInData = new SingInDataViewModel(SingInTextBoxLogin.Text, SingInTextBoxPass.Text);
-               
-            User userSingIn = null;
-            //PracticeDbContext context = new PracticeDbContext
-            /*using (PracticeDbContext context = new PracticeDbContext())
-            {
-                userSingUp = context.Users.Where(b => b.Login == singUpData.Login).FirstOrDefault();
-            }*/
-            PracticeDbContext context = new PracticeDbContext();
-            UsersRepository usersRepository = new UsersRepository(context);
-            List<User> users = usersRepository.GetAll().ToList();
-            userSingIn = users.FirstOrDefault(b => b.Login == singInData.Login && b.Pass == singInData.Pass);
 
-            if (userSingIn != null)
+            if (singInData.Login.Length < 3 && singInData.Login.Length > 25)
             {
-                this.Hide();
-                MainForm mainForm = new MainForm();
-                mainForm.Show();
+                SingInTextBoxLogin.BackColor = Color.FromArgb(209, 113, 113);
+                MessageBox.Show("Логин не может быть меньше 3-х и больше 25-ти символов");
             }
-            else MessageBox.Show("Введите правильные логин и пароль или зарегистрируйтесь");
+            else if (singInData.Pass.Length < 3 && singInData.Pass.Length > 50)
+            {
+                SingInTextBoxPass.BackColor = Color.FromArgb(209, 113, 113);
+                MessageBox.Show("Пароль не может быть меньше 3-х и больше 50-ти символов");
+            }
+            else
+            {
+                SingInTextBoxLogin.BackColor = SystemColors.Window;
+                SingInTextBoxPass.BackColor = SystemColors.Window;
+
+                _container = Bootstrap.BuildContainer();
+                _usersRepository = _container.Resolve<IUsersRepository>();
+
+                User userSingIn = null;
+                //PracticeDbContext context = new PracticeDbContext
+                /*using (PracticeDbContext context = new PracticeDbContext())
+                {
+                    userSingUp = context.Users.Where(b => b.Login == singUpData.Login).FirstOrDefault();
+                }*/
+                //PracticeDbContext context = new PracticeDbContext();
+               // UsersRepository usersRepository = new UsersRepository(context);
+                List<User> users = _usersRepository.GetAll().ToList();
+                userSingIn = users.FirstOrDefault(b => b.Login == singInData.Login && b.Pass == singInData.Pass);
+
+                if (userSingIn != null)
+                {
+                    SingInDataViewModel currentUser = new SingInDataViewModel();
+                    currentUser.CurrentUserFirstName = userSingIn.FirstName;
+                    currentUser.CurrentUserSecondName = userSingIn.SecondName;
+                    currentUser.CurrentUserId = userSingIn.Id;
+                    this.Hide();
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                }
+                else MessageBox.Show("Введите правильные логин и пароль или зарегистрируйтесь");
+            }
         }
 
         private void LableCraeteAccount_Click(object sender, EventArgs e)
