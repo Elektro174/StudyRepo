@@ -67,14 +67,14 @@ namespace Repository
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public IEnumerable<T> UserSingUp()
+       /* public IEnumerable<T> UserSingUp()
         {
             throw new NotImplementedException();
-        }
+        }*/
 
-        public IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate)
+        /*public IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate)
         {
             return (IEnumerable<T>)_dbContext.Set<T>().FirstOrDefault();
-        }
+        }*/
     }
 }

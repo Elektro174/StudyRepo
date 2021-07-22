@@ -19,8 +19,8 @@ namespace Repository.Interfaces
         void Delete(T entity);
         void Update(T entity);
 
-        IEnumerable<T> UserSingUp();
-        IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate);
+        /*IEnumerable<T> UserSingUp();
+        IEnumerable<T> UserSingUp(Expression<Func<T, bool>> predicate);*/
 
 
     }
