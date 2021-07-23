@@ -65,10 +65,9 @@ namespace GUI
 
                 if (userSingIn != null)
                 {
-                    SingInDataViewModel currentUser = new SingInDataViewModel();
-                    currentUser.CurrentUserFirstName = userSingIn.FirstName;
-                    currentUser.CurrentUserSecondName = userSingIn.SecondName;
-                    currentUser.CurrentUserId = userSingIn.Id;
+                   
+                    SingInDataViewModel.CurrentUserId = userSingIn.Id;
+                   
                     this.Hide();
                     MainForm mainForm = new MainForm();
                     mainForm.Show();

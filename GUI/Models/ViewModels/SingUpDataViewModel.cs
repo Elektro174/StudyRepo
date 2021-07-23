@@ -17,9 +17,9 @@ namespace GUI.Models.ViewModels
             FirstName = firstName;
             SecondName = secondName;
         }
-        public string Login { get; set; }
-        public string Pass { get; set; }
-        public string FirstName { get; set; }
-        public string SecondName { get; set; }
+        public static string Login { get; set; }
+        public static string Pass { get; set; }
+        public static string FirstName { get; set; }
+        public static string SecondName { get; set; }
     }
 }

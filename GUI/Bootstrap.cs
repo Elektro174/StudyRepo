@@ -1,7 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Data;
-using Nest;
+using Models;
 using Repository;
 using Repository.Interfaces;
 using System;
@@ -22,7 +22,7 @@ namespace GUI
             container.Register(Component.For<DbContext>().ImplementedBy<PracticeDbContext>());
             container.Register(Component.For<IUnitOfWork>().ImplementedBy<UnitOfWork>());
             container.Register(Classes.FromAssemblyNamed("Repository").
-                BasedOn(typeof(IRepository<>)).WithService.Base().WithServiceDefaultInterfaces());
+                BasedOn(typeof(IRepository<,>)).WithService.Base().WithServiceDefaultInterfaces());
 
             return container;
 

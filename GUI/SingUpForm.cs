@@ -20,6 +20,7 @@ namespace GUI
     {
         WindsorContainer _container;
         IUsersRepository _usersRepository;
+        IUnitOfWork _unitOfWork;
         public SingUpForm()
         {
             InitializeComponent();
@@ -34,22 +35,22 @@ namespace GUI
         {
             SingUpDataViewModel singUpData = new SingUpDataViewModel(TextBoxLogin.Text, TextBoxPass.Text, TextBoxFirstName.Text, TextBoxSecondName.Text);
 
-            if (singUpData.Login.Length < 3 && singUpData.Login.Length > 25)
+            if (SingUpDataViewModel.Login.Length < 3 || SingUpDataViewModel.Login.Length > 25)
             {
                 TextBoxLogin.BackColor = Color.FromArgb(209, 113, 113);
                 MessageBox.Show("Логин не может быть меньше 3-х и больше 25-ти символов");
             }
-            else if (singUpData.Pass.Length < 3 && singUpData.Pass.Length > 50)
+            else if (SingUpDataViewModel.Pass.Length < 3 || SingUpDataViewModel.Pass.Length > 50)
             {
                 TextBoxPass.BackColor = Color.FromArgb(209, 113, 113);
                 MessageBox.Show("Пароль не может быть меньше 3-х и больше 50-ти символов");
             }
-            else if (singUpData.FirstName.Length < 2 && singUpData.FirstName.Length > 25)
+            else if (SingUpDataViewModel.FirstName.Length < 2 || SingUpDataViewModel.FirstName.Length > 25)
             {
                 TextBoxFirstName.BackColor = Color.FromArgb(209, 113, 113);
                 MessageBox.Show("Имя не может быть меньше 2-х и больше 25-ти символов");
             }
-            else if (singUpData.SecondName.Length < 2 && singUpData.SecondName.Length > 25)
+            else if (SingUpDataViewModel.SecondName.Length < 2 || SingUpDataViewModel.SecondName.Length > 25)
             {
                 TextBoxSecondName.BackColor = Color.FromArgb(209, 113, 113);
                 MessageBox.Show("Фамилия не может быть меньше 2-х и больше 25-ти символов");
@@ -63,32 +64,24 @@ namespace GUI
 
                 _container = Bootstrap.BuildContainer();
                 _usersRepository = _container.Resolve<IUsersRepository>();
+                _unitOfWork = _container.Resolve<IUnitOfWork>();
 
                 User userSingUp = null;
-                //PracticeDbContext context = new PracticeDbContext
-                /*using (PracticeDbContext context = new PracticeDbContext())
-                {
-                    userSingUp = context.Users.Where(b => b.Login == singUpData.Login).FirstOrDefault();
-                }*/
-                //PracticeDbContext context = new PracticeDbContext();
-                //UsersRepository usersRepository = new UsersRepository(context);
+                
                 List<User> users = _usersRepository.GetAll().ToList();
-                userSingUp = users.FirstOrDefault(b => b.Login == singUpData.Login);
+                userSingUp = users.FirstOrDefault(b => b.Login == SingUpDataViewModel.Login);
 
                 if (userSingUp == null)
                 {
                     User user = new User();
-                    user.FirstName = singUpData.FirstName;
-                    user.SecondName = singUpData.SecondName;
+                    user.FirstName = SingUpDataViewModel.FirstName;
+                    user.SecondName = SingUpDataViewModel.SecondName;
                     user.CreationDate = DateTime.Now.ToString();
-                    user.Login = singUpData.Login;
-                    user.Pass = singUpData.Pass;
-
-                    //UnitOfWork unitOfWork = new UnitOfWork(context);
+                    user.Login = SingUpDataViewModel.Login;
+                    user.Pass = SingUpDataViewModel.Pass;
 
                     _usersRepository.Create(user);
-
-                    //unitOfWork.Save();
+                    _unitOfWork.Save();
 
                     this.Hide();
                     SingInForm singInForm = new SingInForm();

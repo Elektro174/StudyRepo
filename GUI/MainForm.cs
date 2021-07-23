@@ -21,28 +21,31 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
-        SingInDataViewModel currentUser = new SingInDataViewModel();
+       
 
         WindsorContainer _container;
         ICollectedDataRepository _collectedDataRepository;
-        IUsersRepository _usersRepository;
-
+        IUnitOfWork _unitOfWork;
         private string data = "";
-
+        
         public MainForm()
         {
             InitializeComponent();
+            
 
-            LableCurrentUser.Text = "Пользователь: " + currentUser.CurrentUserFirstName + " " + currentUser.CurrentUserSecondName; 
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object s, EventArgs e)
         {
-
+          
+            
         }
+      
+
 
         private void ButtonUpdatePorts_Click(object sender, EventArgs e)
         {
+            
             string[] ports = SerialPort.GetPortNames();
             ComboBoxPorts.Text = "";
             ComboBoxPorts.Items.Clear();
@@ -84,13 +87,13 @@ namespace GUI
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string returnData = "";
-
+            
 
             SerialPort sp = (SerialPort)sender;
-
+          //  sp.DiscardInBuffer();
             int count = sp.BytesToRead;
 
-            if (count == 36)
+            if (count == 34)
             {
 
                 for (int i = 0; i < count; i++)
@@ -115,18 +118,18 @@ namespace GUI
                    LableDHT11_t.Text = "Температура воздуха: " + model.dht_t + " °C";
                    LableDHT11_h.Text = "Влажность воздуха: " + model.dht_h + " %";
                    LableDS18B20.Text = "Внутренняя температура: " + model.temperature + " °C";
-                   LableLight.Text = "Освещённость: " + model.svet + " попугаев";
+                   LableLight.Text = "Освещённость: " + model.svet + " %";
 
                    LableDHT11_t_fixed.Text = "Температура переключения реле: " + model.SetDHT_t + " °C";
                    LableDHT11_h_fixed.Text = "Влажность переключения реле: " + model.SetDHT_h + " %";
-                   LabelSvet_fixed.Text = "Попугаи переключения реле: " + model.SetSvet + " попугаев";
+                   LabelSvet_fixed.Text = "Проценты переключения реле: " + model.SetSvet + " %";
                    LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + model.SetTemperature + " °C";
 
                    LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + model.relayState1;
                    LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + model.relayState2;
                    LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + model.relayState3;
                    LableReleyStateSvet.Text = "Состояние реле Освещённости: " + model.relayState4;
-
+                   
                });
 
                 returnData = "";
@@ -140,7 +143,7 @@ namespace GUI
         {           
             _container = Bootstrap.BuildContainer();
             _collectedDataRepository = _container.Resolve<ICollectedDataRepository>();
-            
+            _unitOfWork = _container.Resolve<IUnitOfWork>();
 
             MainFormDataViewModel measurement = new MainFormDataViewModel(data);
 
@@ -148,7 +151,7 @@ namespace GUI
 
             CollectedData collectedData = new CollectedData();
             collectedData.CreationDate = DateTime.Now.ToString();
-            collectedData.UserId = currentUser.CurrentUserId;
+            collectedData.UserId = SingInDataViewModel.CurrentUserId;
             collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
             collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
             collectedData.Svet = Convert.ToInt32(measurement.svet);
@@ -165,7 +168,12 @@ namespace GUI
             collectedData.relayState4 = measurement.relayState4;
 
             _collectedDataRepository.Create(collectedData);
+            _unitOfWork.Save();
         }
+
+        
+            
+        
     }
 }
 
