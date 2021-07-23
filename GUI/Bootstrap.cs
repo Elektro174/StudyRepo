@@ -18,7 +18,7 @@ namespace GUI
         public static WindsorContainer BuildContainer()
         {
             WindsorContainer container = new WindsorContainer();
-
+            
             container.Register(Component.For<DbContext>().ImplementedBy<PracticeDbContext>());
             container.Register(Component.For<IUnitOfWork>().ImplementedBy<UnitOfWork>());
             container.Register(Classes.FromAssemblyNamed("Repository").

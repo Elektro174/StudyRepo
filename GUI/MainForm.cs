@@ -16,6 +16,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GUI
 {
@@ -87,23 +88,14 @@ namespace GUI
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string returnData = "";
-            
-
-            SerialPort sp = (SerialPort)sender;
-          //  sp.DiscardInBuffer();
+            SerialPort sp = (SerialPort)sender;         
             int count = sp.BytesToRead;
-
             if (count == 34)
             {
-
                 for (int i = 0; i < count; i++)
                 {
-
-
                     char bt = (char)sp.ReadByte();
                     returnData = returnData + bt.ToString();
-
-
                 }
 
                 Console.WriteLine(returnData.ToString());
@@ -113,8 +105,6 @@ namespace GUI
 
                 this.Invoke((MethodInvoker)delegate
                {
-
-
                    LableDHT11_t.Text = "Температура воздуха: " + model.dht_t + " °C";
                    LableDHT11_h.Text = "Влажность воздуха: " + model.dht_h + " %";
                    LableDS18B20.Text = "Внутренняя температура: " + model.temperature + " °C";
@@ -135,8 +125,6 @@ namespace GUI
                 returnData = "";
                 sp.DiscardInBuffer();
             }
-
-
         }
 
         private void ButtonWriteDataToDb_Click(object sender, EventArgs e)
@@ -146,9 +134,6 @@ namespace GUI
             _unitOfWork = _container.Resolve<IUnitOfWork>();
 
             MainFormDataViewModel measurement = new MainFormDataViewModel(data);
-
-            
-
             CollectedData collectedData = new CollectedData();
             collectedData.CreationDate = DateTime.Now.ToString();
             collectedData.UserId = SingInDataViewModel.CurrentUserId;
@@ -172,7 +157,8 @@ namespace GUI
         }
 
         
-            
+        
+
         
     }
 }

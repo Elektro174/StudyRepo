@@ -11,13 +11,6 @@ namespace Repository
 {
     public class UsersRepository : Repository<int, User>, IUsersRepository//, IDisposable
     {
-        
-
         public UsersRepository(DbContext dbContext) : base(dbContext) { }
-
-       /* public void Dispose()
-        {
-            
-        }*/
     }
 }

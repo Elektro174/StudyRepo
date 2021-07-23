@@ -17,9 +17,21 @@ namespace GUI.Models.ViewModels
             FirstName = firstName;
             SecondName = secondName;
         }
+        /// <summary>
+        /// Логин
+        /// </summary>
         public static string Login { get; set; }
+        /// <summary>
+        /// Пароль
+        /// </summary>
         public static string Pass { get; set; }
+        /// <summary>
+        /// Имя
+        /// </summary>
         public static string FirstName { get; set; }
+        /// <summary>
+        /// Фамилия
+        /// </summary>
         public static string SecondName { get; set; }
     }
 }

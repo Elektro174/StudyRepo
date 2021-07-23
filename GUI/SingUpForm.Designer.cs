@@ -67,9 +67,8 @@ namespace GUI
             this.TextBoxPass.BackColor = System.Drawing.SystemColors.Window;
             this.TextBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxPass.Location = new System.Drawing.Point(272, 274);
-            this.TextBoxPass.Multiline = true;
             this.TextBoxPass.Name = "TextBoxPass";
-            this.TextBoxPass.Size = new System.Drawing.Size(516, 36);
+            this.TextBoxPass.Size = new System.Drawing.Size(516, 38);
             this.TextBoxPass.TabIndex = 2;
             this.TextBoxPass.UseSystemPasswordChar = true;
             // 

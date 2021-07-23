@@ -62,9 +62,8 @@ namespace GUI
             // 
             this.SingInTextBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SingInTextBoxPass.Location = new System.Drawing.Point(272, 190);
-            this.SingInTextBoxPass.Multiline = true;
             this.SingInTextBoxPass.Name = "SingInTextBoxPass";
-            this.SingInTextBoxPass.Size = new System.Drawing.Size(516, 36);
+            this.SingInTextBoxPass.Size = new System.Drawing.Size(516, 38);
             this.SingInTextBoxPass.TabIndex = 2;
             this.SingInTextBoxPass.UseSystemPasswordChar = true;
             // 

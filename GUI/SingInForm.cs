@@ -52,14 +52,7 @@ namespace GUI
                 _container = Bootstrap.BuildContainer();
                 _usersRepository = _container.Resolve<IUsersRepository>();
 
-                User userSingIn = null;
-                //PracticeDbContext context = new PracticeDbContext
-                /*using (PracticeDbContext context = new PracticeDbContext())
-                {
-                    userSingUp = context.Users.Where(b => b.Login == singUpData.Login).FirstOrDefault();
-                }*/
-                //PracticeDbContext context = new PracticeDbContext();
-               // UsersRepository usersRepository = new UsersRepository(context);
+                User userSingIn = null;               
                 List<User> users = _usersRepository.GetAll().ToList();
                 userSingIn = users.FirstOrDefault(b => b.Login == singInData.Login && b.Pass == singInData.Pass);
 

@@ -35,7 +35,10 @@ namespace Repository
                 }
             }
         }
-
+        /// <summary>
+        /// Сохранить изменения
+        /// </summary>
+        /// <returns></returns>
         public int Save()
         {
             return _dbContext.SaveChanges();
