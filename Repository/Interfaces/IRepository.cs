@@ -1,16 +1,13 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository.Interfaces
 {
     public interface IRepository<TKey, T> where T : EntityBase
     {
-        T GetById(TKey Id); //  Guid id
+        T GetById(TKey Id); 
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(Expression<Func<T, bool >> predicate);
         IEnumerable<T> DeleteAll();

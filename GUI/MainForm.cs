@@ -1,48 +1,31 @@
 ﻿using Castle.Windsor;
-using Data;
 using GUI.Models.ViewModels;
 using Models;
-using Repository;
-using Repository.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO.Ports;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
+using Service.Interfaces;
 
 namespace GUI
 {
     public partial class MainForm : Form
     {
-       
-
+        Timer timer;
+        decimal x;
         WindsorContainer _container;
-        ICollectedDataRepository _collectedDataRepository;
-        IUnitOfWork _unitOfWork;
         private string data = "";
-        
         public MainForm()
         {
             InitializeComponent();
-            
-
         }
 
         private void MainForm_Load(object s, EventArgs e)
         {
-          
-            
+            timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 1000;
         }
-      
-
 
         private void ButtonUpdatePorts_Click(object sender, EventArgs e)
         {
@@ -54,7 +37,6 @@ namespace GUI
             {
                 ComboBoxPorts.Items.AddRange(ports);
                 ComboBoxPorts.SelectedIndex = 0;
-
             }
         }
 
@@ -90,7 +72,7 @@ namespace GUI
             string returnData = "";
             SerialPort sp = (SerialPort)sender;         
             int count = sp.BytesToRead;
-            if (count == 34)
+            if (count == 13)
             {
                 for (int i = 0; i < count; i++)
                 {
@@ -105,21 +87,11 @@ namespace GUI
 
                 this.Invoke((MethodInvoker)delegate
                {
-                   LableDHT11_t.Text = "Температура воздуха: " + model.dht_t + " °C";
-                   LableDHT11_h.Text = "Влажность воздуха: " + model.dht_h + " %";
-                   LableDS18B20.Text = "Внутренняя температура: " + model.temperature + " °C";
-                   LableLight.Text = "Освещённость: " + model.svet + " %";
+                   LableTempDHT.Text = "Температура воздуха: " + model.TempDHT + " °C";
+                   LableHumDHT.Text = "Влажность воздуха: " + model.HumDHT + " %";
+                   TempBMP.Text = "Внутренняя температура: " + model.TempBMP + " °C";
+                   PressBMP.Text = "Давление: " + model.PressBMP + " мм рт. ст.";
 
-                   LableDHT11_t_fixed.Text = "Температура переключения реле: " + model.SetDHT_t + " °C";
-                   LableDHT11_h_fixed.Text = "Влажность переключения реле: " + model.SetDHT_h + " %";
-                   LabelSvet_fixed.Text = "Проценты переключения реле: " + model.SetSvet + " %";
-                   LableTemperature_fixed.Text = "Внутренняя температура для переключения реле: " + model.SetTemperature + " °C";
-
-                   LableReleyStateDHT11_t.Text = "Состояние реле температуры: " + model.relayState1;
-                   LableReleyStateDHT11_h.Text = "Состояние реле влажности: " + model.relayState2;
-                   LableReleyStateTemperature.Text = "Состояние реле внутренней температуры: " + model.relayState3;
-                   LableReleyStateSvet.Text = "Состояние реле Освещённости: " + model.relayState4;
-                   
                });
 
                 returnData = "";
@@ -130,36 +102,44 @@ namespace GUI
         private void ButtonWriteDataToDb_Click(object sender, EventArgs e)
         {           
             _container = Bootstrap.BuildContainer();
-            _collectedDataRepository = _container.Resolve<ICollectedDataRepository>();
-            _unitOfWork = _container.Resolve<IUnitOfWork>();
-
+            ISensorService sensorSerrvicee = _container.Resolve<ISensorService>();
             MainFormDataViewModel measurement = new MainFormDataViewModel(data);
-            CollectedData collectedData = new CollectedData();
-            collectedData.CreationDate = DateTime.Now.ToString();
-            collectedData.UserId = SingInDataViewModel.CurrentUserId;
-            collectedData.DHT11_t = Convert.ToInt32(measurement.dht_t);
-            collectedData.DHT11_h = Convert.ToInt32(measurement.dht_h);
-            collectedData.Svet = Convert.ToInt32(measurement.svet);
-            collectedData.Temperature = double.Parse(measurement.temperature, CultureInfo.InvariantCulture);
+            Sensors sensor = new Sensors();
+            sensor.CreationDate = DateTime.Now.ToString();
+            sensor.UserId = SingInDataViewModel.CurrentUserId;
+            sensor.TempDHT = Convert.ToInt32(measurement.TempDHT);
+            sensor.HumDHT = Convert.ToInt32(measurement.HumDHT);
+            sensor.PressBMP = Convert.ToInt32(measurement.PressBMP);
+            sensor.TempBMP = double.Parse(measurement.TempBMP, CultureInfo.InvariantCulture);
 
-            collectedData.SetDHT11_t = Convert.ToInt32(measurement.SetDHT_t);
-            collectedData.SetDHT11_h = Convert.ToInt32(measurement.SetDHT_h);
-            collectedData.SetSvet = Convert.ToInt32(measurement.SetSvet);
-            collectedData.SetTemperature = double.Parse(measurement.SetTemperature, CultureInfo.InvariantCulture);
+            sensorSerrvicee.Create(sensor);
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            MainFormDataViewModel model = new MainFormDataViewModel(data);
+            chart1.Series[0].Points.AddXY(x, model.HumDHT);
+            chart1.Series[1].Points.AddXY(x, model.TempDHT);
+            chart1.Series[2].Points.AddXY(x, model.TempBMP);
 
-            collectedData.relayState1 = measurement.relayState1;
-            collectedData.relayState2 = measurement.relayState2;
-            collectedData.relayState3 = measurement.relayState3;
-            collectedData.relayState4 = measurement.relayState4;
+            if (chart1.Series[0].Points.Count > 10)
+                chart1.Series[0].Points.RemoveAt(0);
+            chart1.Series[0].BorderWidth = 3;
+            chart1.Series[1].BorderWidth = 3;
+            chart1.Series[2].BorderWidth = 3;
+            chart1.ChartAreas[0].AxisY.Minimum = 0;
+            chart1.ChartAreas[0].AxisY.Maximum = 100;
+            chart1.ChartAreas[0].AxisX.Minimum = chart1.Series[0].Points[0].XValue;
+            chart1.ChartAreas[0].AxisX.Maximum = (double)x;
 
-            _collectedDataRepository.Create(collectedData);
-            _unitOfWork.Save();
+            x = x + (decimal)1;
         }
 
-        
-        
-
-        
+        private void RunChart_Click(object sender, EventArgs e)
+        {
+            if (timer.Enabled)
+                timer.Stop();
+            else timer.Start();
+        }
     }
 }
 

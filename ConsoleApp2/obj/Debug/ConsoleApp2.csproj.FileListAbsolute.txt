@@ -4,8 +4,8 @@ C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\Debug\ConsoleApp2.exe
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\Debug\NLog.dll
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\bin\Debug\NLog.xml
-C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.csprojAssemblyReference.cache
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CopyComplete
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.exe
 C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Users\glebn\source\repos\StudyRepo\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.AssemblyReference.cache

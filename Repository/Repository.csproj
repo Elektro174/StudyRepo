@@ -51,8 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectedDataRepository.cs" />
-    <Compile Include="Interfaces\ICollectedDataRepository.cs" />
+    <Compile Include="SensorRepository.cs" />
+    <Compile Include="Interfaces\ISensorRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUsersRepository.cs" />
@@ -62,9 +62,9 @@
     <Compile Include="UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
+    <ProjectReference Include="..\Data\Mydatabase.csproj">
       <Project>{b112152e-7598-4e31-b0b1-8f918de5cc18}</Project>
-      <Name>Data</Name>
+      <Name>Mydatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{f599ed9d-f00a-4754-850e-afc337a62f2f}</Project>

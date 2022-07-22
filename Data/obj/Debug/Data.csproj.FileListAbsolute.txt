@@ -12,8 +12,8 @@ C:\Users\glebn\source\repos\StudyRepo\Data\bin\Debug\Models.dll.config
 C:\Users\glebn\source\repos\StudyRepo\Data\bin\Debug\EntityFramework.xml
 C:\Users\glebn\source\repos\StudyRepo\Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\glebn\source\repos\StudyRepo\Data\bin\Debug\System.Data.SQLite.xml
-C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.csprojAssemblyReference.cache
 C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
-C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.dll
 C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.pdb
+C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+C:\Users\glebn\source\repos\StudyRepo\Data\obj\Debug\Data.csproj.CopyComplete

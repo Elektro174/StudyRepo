@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -38,7 +36,6 @@ namespace Repository
             if (entry.State == EntityState.Detached)
                 _dbContext.Set<T>().Attach(entity);
             _dbContext.Set<T>().Remove(entity);
-
         }
 
         /// <summary>

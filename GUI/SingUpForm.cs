@@ -1,26 +1,19 @@
 ﻿using Castle.Windsor;
-using Data;
 using GUI.Models.ViewModels;
 using Models;
-using Repository;
-using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Service.Interfaces;
 
 namespace GUI
 {
     public partial class SingUpForm : Form
     {
         WindsorContainer _container;
-        IUsersRepository _usersRepository;
-        IUnitOfWork _unitOfWork;
+
         public SingUpForm()
         {
             InitializeComponent();
@@ -28,7 +21,6 @@ namespace GUI
 
         private void SingUpForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void ButtonSingUp_Click(object sender, EventArgs e)
@@ -61,14 +53,10 @@ namespace GUI
                 TextBoxPass.BackColor = SystemColors.Window;
                 TextBoxFirstName.BackColor = SystemColors.Window;
                 TextBoxSecondName.BackColor = SystemColors.Window;
-
                 _container = Bootstrap.BuildContainer();
-                _usersRepository = _container.Resolve<IUsersRepository>();
-                _unitOfWork = _container.Resolve<IUnitOfWork>();
-
+                IUsersService _usersSerrvicee = _container.Resolve<IUsersService>();
                 User userSingUp = null;
-                
-                List<User> users = _usersRepository.GetAll().ToList();
+                List<User> users = _usersSerrvicee.GetAll().ToList();
                 userSingUp = users.FirstOrDefault(b => b.Login == SingUpDataViewModel.Login);
 
                 if (userSingUp == null)
@@ -79,10 +67,7 @@ namespace GUI
                     user.CreationDate = DateTime.Now.ToString();
                     user.Login = SingUpDataViewModel.Login;
                     user.Pass = SingUpDataViewModel.Pass;
-
-                    _usersRepository.Create(user);
-                    _unitOfWork.Save();
-
+                    _usersSerrvicee.Create(user);
                     this.Hide();
                     SingInForm singInForm = new SingInForm();
                     singInForm.Show();
@@ -96,6 +81,10 @@ namespace GUI
             this.Hide();
             SingInForm singInForm = new SingInForm();
             singInForm.Show();
+        }
+
+        private void LableSingUp_Click(object sender, EventArgs e)
+        {
         }
     }
 }

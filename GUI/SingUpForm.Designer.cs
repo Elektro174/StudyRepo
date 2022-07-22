@@ -45,7 +45,7 @@ namespace GUI
             // ButtonSingUp
             // 
             this.ButtonSingUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonSingUp.Location = new System.Drawing.Point(250, 342);
+            this.ButtonSingUp.Location = new System.Drawing.Point(158, 259);
             this.ButtonSingUp.Name = "ButtonSingUp";
             this.ButtonSingUp.Size = new System.Drawing.Size(300, 58);
             this.ButtonSingUp.TabIndex = 0;
@@ -56,26 +56,26 @@ namespace GUI
             // TextBoxLogin
             // 
             this.TextBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxLogin.Location = new System.Drawing.Point(272, 229);
+            this.TextBoxLogin.Location = new System.Drawing.Point(276, 159);
             this.TextBoxLogin.Multiline = true;
             this.TextBoxLogin.Name = "TextBoxLogin";
-            this.TextBoxLogin.Size = new System.Drawing.Size(516, 36);
+            this.TextBoxLogin.Size = new System.Drawing.Size(329, 36);
             this.TextBoxLogin.TabIndex = 1;
             // 
             // TextBoxPass
             // 
             this.TextBoxPass.BackColor = System.Drawing.SystemColors.Window;
             this.TextBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxPass.Location = new System.Drawing.Point(272, 274);
+            this.TextBoxPass.Location = new System.Drawing.Point(276, 204);
             this.TextBoxPass.Name = "TextBoxPass";
-            this.TextBoxPass.Size = new System.Drawing.Size(516, 38);
+            this.TextBoxPass.Size = new System.Drawing.Size(329, 38);
             this.TextBoxPass.TabIndex = 2;
             this.TextBoxPass.UseSystemPasswordChar = true;
             // 
             // LableGetLogin
             // 
             this.LableGetLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableGetLogin.Location = new System.Drawing.Point(2, 229);
+            this.LableGetLogin.Location = new System.Drawing.Point(6, 159);
             this.LableGetLogin.Name = "LableGetLogin";
             this.LableGetLogin.Size = new System.Drawing.Size(204, 36);
             this.LableGetLogin.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace GUI
             // LableGetPass
             // 
             this.LableGetPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableGetPass.Location = new System.Drawing.Point(2, 265);
+            this.LableGetPass.Location = new System.Drawing.Point(6, 195);
             this.LableGetPass.Name = "LableGetPass";
             this.LableGetPass.Size = new System.Drawing.Size(234, 45);
             this.LableGetPass.TabIndex = 4;
@@ -98,15 +98,16 @@ namespace GUI
             this.LableSingUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LableSingUp.Location = new System.Drawing.Point(0, 0);
             this.LableSingUp.Name = "LableSingUp";
-            this.LableSingUp.Size = new System.Drawing.Size(800, 87);
+            this.LableSingUp.Size = new System.Drawing.Size(616, 56);
             this.LableSingUp.TabIndex = 5;
             this.LableSingUp.Text = "Регистрация";
             this.LableSingUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LableSingUp.Click += new System.EventHandler(this.LableSingUp_Click);
             // 
             // LableGetSecondName
             // 
             this.LableGetSecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableGetSecondName.Location = new System.Drawing.Point(2, 150);
+            this.LableGetSecondName.Location = new System.Drawing.Point(6, 95);
             this.LableGetSecondName.Name = "LableGetSecondName";
             this.LableGetSecondName.Size = new System.Drawing.Size(264, 45);
             this.LableGetSecondName.TabIndex = 9;
@@ -116,7 +117,7 @@ namespace GUI
             // LableGetFirstName
             // 
             this.LableGetFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableGetFirstName.Location = new System.Drawing.Point(2, 114);
+            this.LableGetFirstName.Location = new System.Drawing.Point(6, 59);
             this.LableGetFirstName.Name = "LableGetFirstName";
             this.LableGetFirstName.Size = new System.Drawing.Size(204, 36);
             this.LableGetFirstName.TabIndex = 8;
@@ -126,27 +127,27 @@ namespace GUI
             // TextBoxSecondName
             // 
             this.TextBoxSecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxSecondName.Location = new System.Drawing.Point(272, 159);
+            this.TextBoxSecondName.Location = new System.Drawing.Point(276, 104);
             this.TextBoxSecondName.Multiline = true;
             this.TextBoxSecondName.Name = "TextBoxSecondName";
-            this.TextBoxSecondName.Size = new System.Drawing.Size(516, 36);
+            this.TextBoxSecondName.Size = new System.Drawing.Size(329, 36);
             this.TextBoxSecondName.TabIndex = 7;
             // 
             // TextBoxFirstName
             // 
             this.TextBoxFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxFirstName.Location = new System.Drawing.Point(272, 114);
+            this.TextBoxFirstName.Location = new System.Drawing.Point(276, 59);
             this.TextBoxFirstName.Multiline = true;
             this.TextBoxFirstName.Name = "TextBoxFirstName";
-            this.TextBoxFirstName.Size = new System.Drawing.Size(516, 36);
+            this.TextBoxFirstName.Size = new System.Drawing.Size(329, 36);
             this.TextBoxFirstName.TabIndex = 6;
             // 
             // LableCraeteAccount
             // 
-            this.LableCraeteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableCraeteAccount.Location = new System.Drawing.Point(247, 403);
+            this.LableCraeteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LableCraeteAccount.Location = new System.Drawing.Point(158, 320);
             this.LableCraeteAccount.Name = "LableCraeteAccount";
-            this.LableCraeteAccount.Size = new System.Drawing.Size(303, 38);
+            this.LableCraeteAccount.Size = new System.Drawing.Size(300, 38);
             this.LableCraeteAccount.TabIndex = 10;
             this.LableCraeteAccount.Text = "Есть аккаунт? – Войдите";
             this.LableCraeteAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,7 +157,8 @@ namespace GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(616, 366);
             this.Controls.Add(this.LableCraeteAccount);
             this.Controls.Add(this.LableGetSecondName);
             this.Controls.Add(this.LableGetFirstName);

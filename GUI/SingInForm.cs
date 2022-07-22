@@ -1,25 +1,18 @@
 ﻿using Castle.Windsor;
-using Data;
 using GUI.Models.ViewModels;
 using Models;
-using Repository;
-using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Service.Interfaces;
 
 namespace GUI
 {
     public partial class SingInForm : Form
     {
         WindsorContainer _container;
-        IUsersRepository _usersRepository;
         public SingInForm()
         {
             InitializeComponent();
@@ -27,7 +20,6 @@ namespace GUI
 
         private void SingInForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void ButtonSingIn_Click(object sender, EventArgs e)
@@ -50,17 +42,15 @@ namespace GUI
                 SingInTextBoxPass.BackColor = SystemColors.Window;
 
                 _container = Bootstrap.BuildContainer();
-                _usersRepository = _container.Resolve<IUsersRepository>();
+                IUsersService _usersSerrvicee  = _container.Resolve<IUsersService>();
 
                 User userSingIn = null;               
-                List<User> users = _usersRepository.GetAll().ToList();
+                List<User> users = _usersSerrvicee.GetAll().ToList();
                 userSingIn = users.FirstOrDefault(b => b.Login == singInData.Login && b.Pass == singInData.Pass);
 
                 if (userSingIn != null)
                 {
-                   
                     SingInDataViewModel.CurrentUserId = userSingIn.Id;
-                   
                     this.Hide();
                     MainForm mainForm = new MainForm();
                     mainForm.Show();

@@ -41,7 +41,7 @@ namespace GUI
             // ButtonSingIn
             // 
             this.ButtonSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonSingIn.Location = new System.Drawing.Point(250, 285);
+            this.ButtonSingIn.Location = new System.Drawing.Point(617, 97);
             this.ButtonSingIn.Name = "ButtonSingIn";
             this.ButtonSingIn.Size = new System.Drawing.Size(300, 58);
             this.ButtonSingIn.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace GUI
             this.SingInTextBoxLogin.Location = new System.Drawing.Point(272, 108);
             this.SingInTextBoxLogin.Multiline = true;
             this.SingInTextBoxLogin.Name = "SingInTextBoxLogin";
-            this.SingInTextBoxLogin.Size = new System.Drawing.Size(516, 36);
+            this.SingInTextBoxLogin.Size = new System.Drawing.Size(254, 36);
             this.SingInTextBoxLogin.TabIndex = 1;
             // 
             // SingInTextBoxPass
@@ -63,7 +63,7 @@ namespace GUI
             this.SingInTextBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SingInTextBoxPass.Location = new System.Drawing.Point(272, 190);
             this.SingInTextBoxPass.Name = "SingInTextBoxPass";
-            this.SingInTextBoxPass.Size = new System.Drawing.Size(516, 38);
+            this.SingInTextBoxPass.Size = new System.Drawing.Size(254, 38);
             this.SingInTextBoxPass.TabIndex = 2;
             this.SingInTextBoxPass.UseSystemPasswordChar = true;
             // 
@@ -93,19 +93,19 @@ namespace GUI
             this.LableSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LableSingIn.Location = new System.Drawing.Point(0, 0);
             this.LableSingIn.Name = "LableSingIn";
-            this.LableSingIn.Size = new System.Drawing.Size(800, 87);
+            this.LableSingIn.Size = new System.Drawing.Size(966, 87);
             this.LableSingIn.TabIndex = 5;
             this.LableSingIn.Text = "Авторизация";
             this.LableSingIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LableCraeteAccount
             // 
-            this.LableCraeteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LableCraeteAccount.Location = new System.Drawing.Point(247, 403);
+            this.LableCraeteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LableCraeteAccount.Location = new System.Drawing.Point(617, 170);
             this.LableCraeteAccount.Name = "LableCraeteAccount";
-            this.LableCraeteAccount.Size = new System.Drawing.Size(303, 38);
+            this.LableCraeteAccount.Size = new System.Drawing.Size(300, 58);
             this.LableCraeteAccount.TabIndex = 6;
-            this.LableCraeteAccount.Text = "Ещё нет аккаунта?";
+            this.LableCraeteAccount.Text = "Регистрация";
             this.LableCraeteAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LableCraeteAccount.Click += new System.EventHandler(this.LableCraeteAccount_Click);
             // 
@@ -113,7 +113,8 @@ namespace GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(966, 256);
             this.Controls.Add(this.LableCraeteAccount);
             this.Controls.Add(this.LableSingIn);
             this.Controls.Add(this.SingInLableGetPass);

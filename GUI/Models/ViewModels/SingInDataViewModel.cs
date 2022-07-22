@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GUI.Models.ViewModels
+﻿namespace GUI.Models.ViewModels
 {
     public class SingInDataViewModel
     {
-
-
         public SingInDataViewModel() { }
 
         public SingInDataViewModel(string login, string pass)
